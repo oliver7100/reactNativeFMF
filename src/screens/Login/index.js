@@ -6,39 +6,45 @@ import { styles } from "./styles"
 const index = () => {
     return(
         <View 
-            style={styles.view}>
-            <Image 
-                source={Logo}
-            >
-            </Image>
-            <View style={styles.outerInformationContainer}>
-                <View style={styles.innerInformationContainer}>
-                    <View style={styles.textContainer}>
-                        <Text
-                            style={styles.mainText}
-                        >Email</Text>
-                        <TextInput
-                            style={styles.input}
-                        ></TextInput>
+            style={styles.view}
+        >
+            <View style={styles.entireFrame}>
+                <Image
+                    style={styles.image}
+                    source={Logo}
+                >
+                </Image>
+                <View style={styles.outerInformationContainer}>
+                    <View style={styles.innerInformationContainer}>
+                        <View style={styles.textContainer}>
+                            <Text
+                                style={styles.mainText}
+                            >Email</Text>
+                            <TextInput
+                                style={styles.input}
+                            ></TextInput>
+                        </View>
+                        <View style={styles.textContainer}>
+                            <Text
+                                style={styles.mainText}
+                            >Adgangskode</Text>
+                            <TextInput
+                                style={styles.input}
+                            ></TextInput>
+                        </View>
                     </View>
-                    <View style={styles.textContainer}>
-                        <Text
-                            style={styles.mainText}
-                        >Adgangskode</Text>
-                        <TextInput
-                            style={styles.input}
-                        ></TextInput>
-                    </View>
+                    <Text
+                        style={styles.secondaryText}
+                    >Registrer</Text>
                 </View>
-                <Text
-                    style={styles.secondaryText}
-                >Registrer</Text>
+                <TouchableOpacity
+                    style={styles.button}
+                >
+                    <Text
+                        style={styles.buttonText}
+                    >Log Ind</Text>
+                </TouchableOpacity>
             </View>
-            <TouchableOpacity
-                style
-            >
-                <Text>Log Ind</Text>
-            </TouchableOpacity>
         </View>
     )
 }

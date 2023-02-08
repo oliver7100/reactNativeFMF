@@ -7,7 +7,8 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import LoginIndex from "../reactNativeFMF/src/screens/Login/index"
+import LoginIndex from "./src/screens/Login/index"
+import Register from "./src/screens/Login/register"
 import {
   SafeAreaView,
   ScrollView,
@@ -64,7 +65,8 @@ function App(): JSX.Element {
   };
 
   return (
-    <LoginIndex />
+    // <LoginIndex />
+    <Register />
     // <SafeAreaView style={backgroundStyle}>
     //   <StatusBar
     //     barStyle={isDarkMode ? 'light-content' : 'dark-content'}

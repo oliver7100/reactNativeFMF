@@ -5,6 +5,25 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 22,
     },
+    button: {
+        width: "40%",
+        height: "8%",
+        backgroundColor: "#6F4E37",
+        marginTop: "10%",
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: "#5C4033",
+        borderRadius: 6
+    },
+    buttonText: {
+        color: "white",
+        fontSize: 20
+    },
+    image:{
+        resizeMode: "contain",
+        width: "100%"
+    },
     secondaryText: {
         color: "white",
         fontSize: 16,
@@ -16,9 +35,11 @@ const styles = StyleSheet.create({
         width: "100%",
         borderColor: "black",
         borderWidth: 1,
+        borderRadius: 8
     },
     view: {
         height: "100%",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -26,7 +47,7 @@ const styles = StyleSheet.create({
     },
     outerInformationContainer: {
         display: "flex",
-        width: "70%",
+        width: "100%",
         alignItems: "flex-end"
     },
     innerInformationContainer: {
@@ -40,9 +61,11 @@ const styles = StyleSheet.create({
         width: "100%",
         marginTop: "8%"
     },
-    loginButton: {
-        width: "40%",
-        backgroundColor: "red"
+    entireFrame: {
+        width: "80%",
+        height: "80%",
+        justifyContent: "space-between",
+        alignItems: "center"
     }
 })
 
