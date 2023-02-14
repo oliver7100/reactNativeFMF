@@ -7,8 +7,8 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import LoginIndex from "./src/screens/Login/index"
-import Register from "./src/screens/Login/register"
+import LoginIndex from "./src/screens/login"
+import Register from "./src/screens/login/register"
 import {
   SafeAreaView,
   ScrollView,
@@ -65,8 +65,8 @@ function App(): JSX.Element {
   };
 
   return (
-    // <LoginIndex />
-    <Register />
+    <LoginIndex />
+    //<Register />
     // <SafeAreaView style={backgroundStyle}>
     //   <StatusBar
     //     barStyle={isDarkMode ? 'light-content' : 'dark-content'}

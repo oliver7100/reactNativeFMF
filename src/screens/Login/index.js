@@ -1,11 +1,14 @@
 import React from "react"
-import {View, Text, Image, Button, TextInput, StyleSheet, TouchableOpacity} from "react-native"
+import {ScrollView, View, Text, Image, Button, TextInput, StyleSheet, TouchableOpacity} from "react-native"
+import { useForm } from "react-hook-form";
 import Logo from "./icon.png"
 import { styles } from "./styles"
+import Flex from "../../components/flex"
 
 const index = () => {
+    const { control, handleSubmit } = useForm()
     return(
-        <View 
+        <View
             style={styles.view}
         >
             <View style={styles.entireFrame}>
@@ -21,6 +24,7 @@ const index = () => {
                                 style={styles.mainText}
                             >Email</Text>
                             <TextInput
+                                name="email"
                                 style={styles.input}
                             ></TextInput>
                         </View>
@@ -29,6 +33,7 @@ const index = () => {
                                 style={styles.mainText}
                             >Adgangskode</Text>
                             <TextInput
+                                name="password"
                                 style={styles.input}
                             ></TextInput>
                         </View>

@@ -21,6 +21,7 @@ const index = () => {
                                 style={styles.mainText}
                             >Email</Text>
                             <TextInput
+                                name="email"
                                 style={styles.input}
                             ></TextInput>
                         </View>
@@ -29,6 +30,7 @@ const index = () => {
                                 style={styles.mainText}
                             >Adgangskode</Text>
                             <TextInput
+                                name="password"
                                 style={styles.input}
                             ></TextInput>
                         </View>
@@ -36,6 +38,7 @@ const index = () => {
                             style={styles.mainText}
                         >Bekræft Adgangskode</Text>
                         <TextInput
+                            name="confirmPassword"
                             style={styles.input}
                         ></TextInput>
                     </View>

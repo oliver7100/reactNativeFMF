@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     image:{
         resizeMode: "contain",
-        width: "100%"
+        width: "50%"
     },
     secondaryText: {
         color: "white",
