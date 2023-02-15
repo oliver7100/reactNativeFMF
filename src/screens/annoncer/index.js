@@ -14,7 +14,7 @@ const CustomText = ({ className = '', ...props }) => (
 
 const Announce = () => {
   return (
-    <ScrollView bounces="false">
+    <ScrollView>
       <View className="flex flex-1 flex-col justify-center items-center">
         <Box>
           <CustomText>01</CustomText>

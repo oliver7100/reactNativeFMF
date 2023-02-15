@@ -56,7 +56,7 @@ const MainContainer = () => {
           }}
         />
         <Tab.Screen
-          name="Profile"
+          name="Profil"
           component={Token ? Business : Customer}
           options={{
             tabBarIcon: () => (
