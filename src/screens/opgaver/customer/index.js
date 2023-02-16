@@ -7,13 +7,21 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native'
-import ArrowIcon from '../support/images/arrow_down.png'
-import GenericPicture from '../profile/business/testimage.jpeg'
-import ReturnablePage from '../../components/returnablepage'
+import ArrowIcon from '../../support/images/arrow_down.png'
+import GenericPicture from './testimage.jpeg'
+import ReturnablePage from '../../../components/returnablepage'
+import WriteIcon from './writeicon.png'
 
 const Box = ({ className = '', ...props }) => (
   <View
-    className={`h-20 w-11/12 m-2  items-center justify-between flex flex-row bg-gray-400 rounded overflow-hidden ${className}`}
+    className={`h-20 w-11/12 m-2 items-center justify-between flex flex-row bg-gray-400 rounded overflow-hidden ${className}`}
+    {...props}
+  />
+)
+
+const ImageCircle = ({ className = '', ...props }) => (
+  <Image
+    className={`w-16 h-16 bg-gray-400 rounded-full overflow-hidden items-center justify-between m-5 ${className}`}
     {...props}
   />
 )
@@ -23,7 +31,7 @@ const ImageBox = ({ className = '', ...props }) => (
 )
 
 const CustomText = ({ className = '', ...props }) => (
-  <Text className={`text-white ${className}`} {...props} />
+  <Text className={`text-black font-mono ${className}`} {...props} />
 )
 
 const TruncateString = (string) => {
@@ -33,8 +41,9 @@ const TruncateString = (string) => {
   return string
 }
 
-var taskString = 'Sommerfugl på mine fede lår din fede nar'
-var companyString = '6ix Bullets in you ass bitchass'
+var taskString =
+  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+var companyString = '6ix Bullets'
 
 const Assignments = () => {
   const [isOpen, setisOpen] = useState(false)
@@ -46,12 +55,10 @@ const Assignments = () => {
           <Box>
             <ImageBox source={GenericPicture}></ImageBox>
             <View className="gap-2">
-              <Text>{TruncateString(taskString)}</Text>
-              <Text>{TruncateString(companyString)}</Text>
+              <CustomText>{TruncateString(taskString)}</CustomText>
+              <CustomText>{TruncateString(companyString)}</CustomText>
             </View>
-            <TouchableOpacity
-              onPress={() => setTest(true)}
-              style={{ backgroundColor: 'blue' }}>
+            <TouchableOpacity onPress={() => setisOpen(true)}>
               <Image
                 source={ArrowIcon}
                 className="w-6 h-6 -rotate-90 mr-5"></Image>
@@ -59,6 +66,12 @@ const Assignments = () => {
           </Box>
         </View>
       </ScrollView>
+      <View className="bottom-0 right-0 absolute">
+        <TouchableOpacity onPress={() => setisOpen(true)}>
+          <ImageCircle source={WriteIcon} />
+        </TouchableOpacity>
+      </View>
+
       <ReturnablePage isActive={isOpen} setIsOpen={setisOpen}>
         <Text>Test</Text>
       </ReturnablePage>

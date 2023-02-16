@@ -10,10 +10,11 @@ import supportLogo from './images/supportimg.png'
 import assignmentLogo from './images/assignmentimg.png'
 import Business from '../screens/profile/business/index'
 import Announce from '../screens/annoncer/index'
-import Assignments from '../screens/opgaver/index'
+import Assignments from '../screens/opgaver/customer/index'
+import CustomerAssignments from '../screens/opgaver/business/index'
 
 const Tab = createBottomTabNavigator()
-const Token = false
+const Token = true
 
 const MainContainer = () => {
   return (
@@ -48,7 +49,7 @@ const MainContainer = () => {
         />
         <Tab.Screen
           name="Opgaver"
-          component={Assignments}
+          component={Token ? Assignments : CustomerAssignments}
           options={{
             tabBarIcon: () => (
               <Image source={assignmentLogo} style={styles.images} />
