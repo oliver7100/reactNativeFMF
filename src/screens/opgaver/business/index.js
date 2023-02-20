@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import ReturnablePage from '../../../components/returnablepage'
 
-const CustomerAssignments = () => {
+const BusinessAssignments = () => {
   const [isOpen, setisOpen] = useState(false)
 
   const Box = ({ className = '', ...props }) => (
@@ -26,4 +26,4 @@ const CustomerAssignments = () => {
   )
 }
 
-export default CustomerAssignments
+export default BusinessAssignments

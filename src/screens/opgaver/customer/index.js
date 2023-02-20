@@ -7,10 +7,11 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native'
-import ArrowIcon from '../../support/images/arrow_down.png'
+import ArrowIcon from '../../../assets/images/arrow_down.png'
 import GenericPicture from './testimage.jpeg'
 import ReturnablePage from '../../../components/returnablepage'
 import WriteIcon from './writeicon.png'
+import WritePage from '../../../components/assignmentwritepage'
 
 const Box = ({ className = '', ...props }) => (
   <View
@@ -21,7 +22,7 @@ const Box = ({ className = '', ...props }) => (
 
 const ImageCircle = ({ className = '', ...props }) => (
   <Image
-    className={`w-16 h-16 bg-gray-400 rounded-full overflow-hidden items-center justify-between m-5 ${className}`}
+    className={`w-16 h-16 bg-gray-400 rounded-full overflow-hidden items-center justify-between m-5${className}`}
     {...props}
   />
 )
@@ -45,9 +46,7 @@ var taskString =
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 var companyString = '6ix Bullets'
 
-const Assignments = () => {
-  const [isOpen, setisOpen] = useState(false)
-
+const CustomerAssignments = ({ navigation }) => {
   return (
     <>
       <ScrollView>
@@ -58,7 +57,7 @@ const Assignments = () => {
               <CustomText>{TruncateString(taskString)}</CustomText>
               <CustomText>{TruncateString(companyString)}</CustomText>
             </View>
-            <TouchableOpacity onPress={() => setisOpen(true)}>
+            <TouchableOpacity onPress={() => navigation.navigate('Write')}>
               <Image
                 source={ArrowIcon}
                 className="w-6 h-6 -rotate-90 mr-5"></Image>
@@ -67,16 +66,12 @@ const Assignments = () => {
         </View>
       </ScrollView>
       <View className="bottom-0 right-0 absolute">
-        <TouchableOpacity onPress={() => setisOpen(true)}>
+        <TouchableOpacity onPress={() => navigation.navigate('Opgave')}>
           <ImageCircle source={WriteIcon} />
         </TouchableOpacity>
       </View>
-
-      <ReturnablePage isActive={isOpen} setIsOpen={setisOpen}>
-        <Text>Test</Text>
-      </ReturnablePage>
     </>
   )
 }
 
-export default Assignments
+export default CustomerAssignments

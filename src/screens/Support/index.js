@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native'
 import { AccordionItem } from 'react-native-accordion-list-view'
-import Icon from './images/arrow_down.png'
+import Icon from '../../assets/images/arrow_down.png'
 import color from '../../assets/themes/color'
 
 const Support = () => {

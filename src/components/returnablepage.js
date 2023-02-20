@@ -1,5 +1,6 @@
 import react from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
+import ArrowDown from '../assets/images/arrow_down.png'
 
 const ReturnablePage = ({ children, isActive, setIsOpen }) => {
   if (!isActive) return null
@@ -17,17 +18,12 @@ const ReturnablePage = ({ children, isActive, setIsOpen }) => {
         backgroundColor: 'white',
       }}>
       <TouchableOpacity
-        style={{
-          width: 40,
-          height: 40,
-          top: 0,
-          left: 0,
-          position: 'absolute',
-          backgroundColor: 'black',
-        }}
+        className="absolute top-0 left-0"
         onPress={() => {
           setIsOpen(false)
-        }}></TouchableOpacity>
+        }}>
+        <Image className="w-10 h-10 rotate-90 m-3" source={ArrowDown}></Image>
+      </TouchableOpacity>
       <View>{children}</View>
     </View>
   )

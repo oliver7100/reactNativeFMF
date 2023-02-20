@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { Image, StyleSheet } from 'react-native'
 import color from '../assets/themes/color'
@@ -11,10 +12,34 @@ import assignmentLogo from './images/assignmentimg.png'
 import Business from '../screens/profile/business/index'
 import Announce from '../screens/annoncer/index'
 import Assignments from '../screens/opgaver/customer/index'
-import CustomerAssignments from '../screens/opgaver/business/index'
+import BusinessAssignments from '../screens/opgaver/business/index'
+import AssignmentWrite from '../components/assignmentwritepage'
+import Opgave from '../components/showopgaver'
 
+const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
-const Token = true
+const Token = false
+
+const AssignmentStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: color.primaryColor,
+        },
+      }}>
+      <Stack.Screen name="Opgaver" component={Assignments} />
+      <Stack.Screen
+        name="Opgave"
+        component={Opgave}
+        options={{
+          presentation: 'modal',
+        }}
+      />
+      <Stack.Screen name="Write" component={AssignmentWrite} />
+    </Stack.Navigator>
+  )
+}
 
 const MainContainer = () => {
   return (
@@ -48,9 +73,10 @@ const MainContainer = () => {
           }}
         />
         <Tab.Screen
-          name="Opgaver"
-          component={Token ? Assignments : CustomerAssignments}
+          name="Opgaver "
+          component={Token ? BusinessAssignments : AssignmentStack}
           options={{
+            headerShown: false,
             tabBarIcon: () => (
               <Image source={assignmentLogo} style={styles.images} />
             ),
