@@ -15,9 +15,13 @@ import Assignments from '../screens/opgaver/customer/index'
 import BusinessAssignments from '../screens/opgaver/business/index'
 import AssignmentWrite from '../components/assignmentwritepage'
 import Opgave from '../components/showopgaver'
+import LoginScreen from '../screens/Login'
+import { useAuthProvider } from '../components/auth'
+import RegisterScreen from '../screens/Login/register'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
+const _AuthStack = createStackNavigator()
 const Token = false
 
 const AssignmentStack = () => {
@@ -41,10 +45,24 @@ const AssignmentStack = () => {
   )
 }
 
-const MainContainer = () => {
+const AuthStack = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
+    <_AuthStack.Navigator>
+      <_AuthStack.Screen 
+        component={LoginScreen}
+        name="Login"
+      />
+      <_AuthStack.Screen 
+        component={RegisterScreen}
+        name="Register"
+      />
+    </_AuthStack.Navigator>
+  )
+}
+
+const TabNavigator = () => {
+  return (
+    <Tab.Navigator
         screenOptions={{
           tabBarActiveTintColor: 'rgba(0,0,0,1)',
           headerStyle: {
@@ -92,6 +110,22 @@ const MainContainer = () => {
           }}
         />
       </Tab.Navigator>
+  )
+}
+
+const MainContainer = () => {
+  const {state} = useAuthProvider()
+  return (
+    <NavigationContainer>
+      {
+        state.token
+        ? (
+          <TabNavigator />
+        )
+        : (
+          <AuthStack />
+        )
+      }
     </NavigationContainer>
   )
 }

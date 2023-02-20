@@ -1,3 +1,4 @@
+import axios from "axios"
 import { createContext, useMemo, useReducer } from "react"
 
 export const AuthContext = createContext()
@@ -12,7 +13,11 @@ const AuthProvider = ({children}) => {
     const actions = useMemo(() => {
         return {
             login: (email, password) => {
-                console.log(email, password)
+                axios.post("http://192.168.1.131:3000/api/auth/login", {email, password})
+                .then(({data: {token}}) => {
+                    dispatch({token})
+                })
+                .catch(err => console.log(JSON.stringify(err.response.data)))
             }
         }
     }, [])
