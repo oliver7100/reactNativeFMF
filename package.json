@@ -18,7 +18,7 @@
     "@react-navigation/stack": "^6.3.14",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.71.2",
+    "react-native": "^0.71.2",
     "react-native-accordion-list-view": "^2.0.1",
     "react-native-animated-accordion": "^0.1.1",
     "react-native-gesture-handler": "^2.9.0",

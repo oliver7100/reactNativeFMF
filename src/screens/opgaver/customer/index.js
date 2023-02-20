@@ -7,7 +7,11 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native'
+<<<<<<< Updated upstream
 import ArrowIcon from '../../../assets/images/arrow_down.png'
+=======
+// import ArrowIcon from '../../support/images/arrow_down.png'
+>>>>>>> Stashed changes
 import GenericPicture from './testimage.jpeg'
 import ReturnablePage from '../../../components/returnablepage'
 import WriteIcon from './writeicon.png'
@@ -57,10 +61,15 @@ const CustomerAssignments = ({ navigation }) => {
               <CustomText>{TruncateString(taskString)}</CustomText>
               <CustomText>{TruncateString(companyString)}</CustomText>
             </View>
+<<<<<<< Updated upstream
             <TouchableOpacity onPress={() => navigation.navigate('Write')}>
               <Image
+=======
+            <TouchableOpacity onPress={() => setisOpen(true)}>
+              {/* <Image
+>>>>>>> Stashed changes
                 source={ArrowIcon}
-                className="w-6 h-6 -rotate-90 mr-5"></Image>
+                className="w-6 h-6 -rotate-90 mr-5"></Image> */}
             </TouchableOpacity>
           </Box>
         </View>
