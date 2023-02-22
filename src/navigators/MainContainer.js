@@ -3,13 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { Image, StyleSheet } from 'react-native'
 import color from '../assets/themes/color'
-import Support from '../screens/Support'
-import Customer from '../screens/Profile/customer'
+import Support from '../screens/support'
+import Customer from '../screens/profile/customer'
 import profileLogo from './images/profileimg.png'
 import annonceLogo from './images/annonceimg.png'
 import supportLogo from './images/supportimg.png'
 import assignmentLogo from './images/assignmentimg.png'
-import Business from '../screens/Profile/business'
+import Business from '../screens/profile/business'
 import Announce from '../screens/annoncer/index'
 import Assignments from '../screens/opgaver/customer/index'
 import BusinessAssignments from '../screens/opgaver/business/index'
@@ -48,14 +48,8 @@ const AssignmentStack = () => {
 const AuthStack = () => {
   return (
     <_AuthStack.Navigator>
-      <_AuthStack.Screen 
-        component={LoginScreen}
-        name="Login"
-      />
-      <_AuthStack.Screen 
-        component={RegisterScreen}
-        name="Register"
-      />
+      <_AuthStack.Screen component={LoginScreen} name="Login" />
+      <_AuthStack.Screen component={RegisterScreen} name="Register" />
     </_AuthStack.Navigator>
   )
 }
@@ -63,69 +57,61 @@ const AuthStack = () => {
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-        screenOptions={{
-          tabBarActiveTintColor: 'rgba(0,0,0,1)',
-          headerStyle: {
-            backgroundColor: color.primaryColor,
-          },
-          tabBarStyle: {
-            backgroundColor: color.primaryColor,
-          },
-        }}>
-        <Tab.Screen
-          name="Annoncer"
-          component={Announce}
-          options={{
-            tabBarIcon: () => (
-              <Image source={annonceLogo} style={styles.images} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Support"
-          component={Support}
-          options={{
-            tabBarIcon: () => (
-              <Image source={supportLogo} style={styles.images} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Opgaver "
-          component={Token ? BusinessAssignments : AssignmentStack}
-          options={{
-            headerShown: false,
-            tabBarIcon: () => (
-              <Image source={assignmentLogo} style={styles.images} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Profil"
-          component={Token ? Business : Customer}
-          options={{
-            tabBarIcon: () => (
-              <Image source={profileLogo} style={styles.images} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
+      screenOptions={{
+        tabBarActiveTintColor: 'rgba(0,0,0,1)',
+        headerStyle: {
+          backgroundColor: color.primaryColor,
+        },
+        tabBarStyle: {
+          backgroundColor: color.primaryColor,
+        },
+      }}>
+      <Tab.Screen
+        name="Annoncer"
+        component={Announce}
+        options={{
+          tabBarIcon: () => (
+            <Image source={annonceLogo} style={styles.images} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Support"
+        component={Support}
+        options={{
+          tabBarIcon: () => (
+            <Image source={supportLogo} style={styles.images} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Opgaver "
+        component={Token ? BusinessAssignments : AssignmentStack}
+        options={{
+          headerShown: false,
+          tabBarIcon: () => (
+            <Image source={assignmentLogo} style={styles.images} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profil"
+        component={Token ? Business : Customer}
+        options={{
+          tabBarIcon: () => (
+            <Image source={profileLogo} style={styles.images} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   )
 }
 
 const MainContainer = () => {
-  const {state} = useAuthProvider()
+  const { state } = useAuthProvider()
   return (
     <NavigationContainer>
-      {
-        state.token
-        ? (
-          <TabNavigator />
-        )
-        : (
-          <AuthStack />
-        )
-      }
+      {state.token ? <TabNavigator /> : <AuthStack />}
     </NavigationContainer>
   )
 }

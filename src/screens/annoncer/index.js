@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import { Text, View, ScrollView } from 'react-native'
 
@@ -12,28 +13,40 @@ const CustomText = ({ className = '', ...props }) => (
   <Text className={`text-white ${className}`} {...props} />
 )
 
+const fetchAdvertisements = () => {
+  return axios
+    .get('http://192.168.1.131:3000/api/advertisement', {
+      AllowDisabled: true,
+    })
+    .then((res) => {
+      return res.data
+    })
+    .catch((err) => console.log(JSON.stringify(err.response.data)))
+}
+
 const Announce = () => {
+  const [advertisements, setAdvertisements] = React.useState([])
+
+  React.useEffect(() => {
+    fetchAdvertisements().then((data) => {
+      setAdvertisements(data.items)
+    })
+  }, [])
+
+  if (!advertisements.length) {
+    return null
+  }
+
   return (
     <ScrollView>
       <View className="flex flex-1 flex-col justify-center items-center">
-        <Box>
-          <CustomText>01</CustomText>
-        </Box>
-        <Box>
-          <CustomText>02</CustomText>
-        </Box>
-        <Box>
-          <CustomText>03</CustomText>
-        </Box>
-        <Box>
-          <CustomText>04</CustomText>
-        </Box>
-        <Box>
-          <CustomText>05</CustomText>
-        </Box>
-        <Box>
-          <CustomText>06</CustomText>
-        </Box>
+        {advertisements.map((ad) => {
+          return (
+            <Box>
+              <CustomText>{ad.description}</CustomText>
+            </Box>
+          )
+        })}
       </View>
     </ScrollView>
   )
