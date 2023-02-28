@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 22,
     },
+    image: {
+        aspectRatio: 1,
+        height: "25%"
+    },
     secondaryText: {
         color: "white",
         fontSize: 16,
@@ -16,33 +20,45 @@ const styles = StyleSheet.create({
         width: "100%",
         borderColor: "black",
         borderWidth: 1,
+        color: "black"
     },
     view: {
         height: "100%",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-evenly",
+        paddingVertical: "10%",
         alignItems: "center",
-        backgroundColor: "#595048"
+        backgroundColor: "#595048",
     },
     outerInformationContainer: {
         display: "flex",
         width: "70%",
-        alignItems: "flex-end"
+        height: "35%",
+        gap: 10,
+        alignItems: "flex-end",
     },
     innerInformationContainer: {
         width: "100%",
         display: "flex",
+        gap: 35,
         alignItems: "center",
     },
     textContainer: {
         display: "flex",
         alignItems: "center",
         width: "100%",
-        marginTop: "8%"
     },
-    loginButton: {
-        width: "40%",
-        backgroundColor: "red"
+    button: {
+        width: "25%",
+        height: "6%",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#C19A6B",
+        borderRadius: 4
+    },
+    buttonText: {
+        color: "black",
+        fontSize: 18
     }
 })
 

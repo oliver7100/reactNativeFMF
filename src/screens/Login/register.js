@@ -1,57 +1,76 @@
-import React from "react"
-import {View, Text, Image, Button, TextInput, StyleSheet, TouchableOpacity} from "react-native"
+import React, { useState } from "react"
+import {View, Text, Image, TouchableOpacity,ScrollView} from "react-native"
+import { TextInput } from "react-native-paper"
 import Logo from "./icon.png"
 import { styles } from "./styles"
+import { useAuthProvider } from '../../components/auth'
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
+
+    const {actions} = useAuthProvider()
+
+    const [email, setEmail] = useState("")
+    const [pwd, setPwd] = useState("")
+    const [name, setName] = useState("")
+
     return(
-        <View 
-            style={styles.view}
+        <ScrollView 
+            contentContainerStyle={styles.view}
         >
-            <View style={styles.entireFrame}>
-                <Image
-                    style={styles.image}
-                    source={Logo}
-                >
-                </Image>
-                <View style={styles.outerInformationContainer}>
-                    <View style={styles.innerInformationContainer}>
-                        <View style={styles.textContainer}>
-                            <Text
-                                style={styles.mainText}
-                            >Email</Text>
-                            <TextInput
-                                style={styles.input}
-                            ></TextInput>
-                        </View>
-                        <View style={styles.textContainer}>
-                            <Text
-                                style={styles.mainText}
-                            >Adgangskode</Text>
-                            <TextInput
-                                style={styles.input}
-                            ></TextInput>
-                        </View>
-                        <Text
-                            style={styles.mainText}
-                        >Bekræft Adgangskode</Text>
+            <Image
+                style={styles.image}
+                source={Logo}
+            >
+            </Image>
+            <View style={styles.outerInformationContainer}>
+                <View style={styles.innerInformationContainer}>
+                    <View style={styles.textContainer}>
                         <TextInput
                             style={styles.input}
-                        ></TextInput>
+                            onChangeText={setEmail}
+                            value={email}
+                            label="Email"
+                        />
                     </View>
-                    <Text
-                        style={styles.secondaryText}
-                    >Log Ind</Text>
+                    <View style={styles.textContainer}>
+                        <TextInput
+                            style={styles.input}
+                            value={pwd}
+                            label="Password"
+                            onChangeText={setPwd}
+                        />
+                    </View>
+                    <View style={styles.textContainer}>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setName}
+                            value={name}
+                            label="Navn"
+                        />
+                    </View>
                 </View>
-                <TouchableOpacity
-                    style={styles.button}
-                >
-                    <Text
-                        style={styles.buttonText}
-                    >Log Ind</Text>
-                </TouchableOpacity>
             </View>
-        </View>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={
+                    () => actions.register(email, pwd, name)
+                    }
+            >
+                <Text
+                    style={styles.buttonText}
+                >Registrer</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={
+                () => navigation.navigate("Login")
+                }
+            >
+                <Text
+                style={styles.buttonText}
+                >Log Ind</Text>
+            </TouchableOpacity>
+        </ScrollView>
     )
 }
 

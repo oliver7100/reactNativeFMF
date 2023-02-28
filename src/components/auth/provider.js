@@ -18,6 +18,13 @@ const AuthProvider = ({children}) => {
                     dispatch({token})
                 })
                 .catch(err => console.log(JSON.stringify(err.response.data)))
+            },
+            register: (email, password, name) => {
+                axios.post("http://192.168.1.131:3000/api/auth/register", {user: {email, password, name}})
+                .then(({data: {token}}) => {
+                    dispatch({token})
+                })
+                .catch(err => console.log(JSON.stringify(err.response.data)))
             }
         }
     }, [])
