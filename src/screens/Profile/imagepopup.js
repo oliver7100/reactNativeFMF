@@ -15,7 +15,7 @@ const PopUp = ({isActive, setIsActive }) => {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        opacity: 0.5
+        opacity: 0.7
       }}>
       <TouchableOpacity
         onPress={() => {

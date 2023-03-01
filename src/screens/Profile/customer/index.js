@@ -28,16 +28,22 @@ const Customer = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.titleBar}></View>
-        <TouchableOpacity style={styles.profileImage}
-          onPress={() => setPopup(!popup)}
-        >
+        <View style={styles.profileImageContainer}>
+          <View style={styles.profileImage}>
           <Image
             source={require('../images/placeholderImage.png')}
             style={styles.image}
             resizeMode="center"
           />
-          <PopUp isActive ={popup} setIsActive={setPopup}/>
-        </TouchableOpacity>
+          </View>
+          <TouchableOpacity style={styles.changeImageContainer}>
+            <Image
+              source={require('../images/camera.png')}
+              style={styles.changeImage}
+            />
+          </TouchableOpacity>
+          {/* <PopUp isActive ={popup} setIsActive={setPopup}/> */}
+        </View>
         <View style={styles.infoContainer}>
           <TextComponent style={[styles.Text, { fontWeight: '200', fontSize: 36 }]}>
             Carl Larsen
@@ -76,12 +82,18 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginHorizontal: 16,
   },
-  profileImage: {
+  profileImageContainer: {
     width: 200,
     height: 200,
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+  },
+  profileImage: {
+    width: "100%",
+    height: "100%",
     borderRadius: 100,
-    backgroundColor: "blue",
     overflow: 'hidden',
+    position: "absolute"
   },
   infoContainer: {
     alignSelf: 'center',
@@ -103,5 +115,19 @@ const styles = StyleSheet.create({
   logoutText: {
     fontSize: 16,
     color: "white"
+  },
+  changeImageContainer: {
+    backgroundColor: "#595048",
+    marginBottom: 6,
+    marginLeft: 6,
+    width: 46,
+    height: 46,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  changeImage: {
+    width: 40,
+    height: 40
   },
 })
