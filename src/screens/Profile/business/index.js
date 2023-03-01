@@ -1,13 +1,23 @@
 import React from 'react'
 import {
   StyleSheet,
-  Text,
   View,
   SafeAreaView,
   Image,
   ScrollView,
+  TouchableOpacity,
+  Text
 } from 'react-native'
 import Star from '../images/star.png'
+
+const TextComponent = (props) => {
+  return (
+    <Text style={{color: "black"}}>
+      {props.children}
+    </Text>
+  );
+}
+
 
 const Business = () => {
   return (
@@ -24,16 +34,22 @@ const Business = () => {
           />
         </View>
         <View style={styles.infoContainer}>
-          <Text style={[styles.Text, { fontWeight: '200', fontSize: 36 }]}>
+          <TextComponent style={[styles.TextComponent, { fontWeight: '200', fontSize: 36 }]}>
             Six Bullets
-          </Text>
-          <Text>Email: test@gmail.com</Text>
-          <Text>Address: Test44 gade 1</Text>
+          </TextComponent>
+          <TextComponent>Email: test@gmail.com</TextComponent>
+          <TextComponent>Address: Test44 gade 1</TextComponent>
         </View>
         <View style={[styles.container, { marginTop: 20 }]}>
           <Image source={Star} style={styles.starImage} />
-          <Text>4.3/5</Text>
+          <TextComponent>4.3/5</TextComponent>
         </View>
+        <TouchableOpacity 
+          style={styles.logoutButton}
+          onPress={() => Logout}
+        >
+          <Text style={styles.logoutText}>Log ud</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   )
@@ -42,6 +58,9 @@ const Business = () => {
 export default Business
 
 const styles = StyleSheet.create({
+  TextComponent: {
+    color: "black"
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

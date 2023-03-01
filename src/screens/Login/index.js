@@ -14,8 +14,8 @@ import { styles } from './styles'
 const LoginScreen = ({navigation}) => {
   const {actions} = useAuthProvider()
 
-  const [email, setEmail] = useState("")
-  const [pwd, setPwd] = useState("")
+  const [email, setEmail] = useState("test@test.dk")
+  const [pwd, setPwd] = useState("test")
 
   return (
     <ScrollView contentContainerStyle={styles.view}>
