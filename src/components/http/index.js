@@ -1,4 +1,5 @@
 import axios from 'axios'
+import React from 'react'
 import { useAuthProvider } from '../auth'
 
 const HttpContext = React.createContext()
@@ -8,7 +9,7 @@ const HttpProvider = ({ children, ctx }) => {
     state: { token },
   } = useAuthProvider()
 
-  const _client = React.useMemo(() => {
+  const client = React.useMemo(() => {
     const _axios = axios.create({
       baseURL: 'https://fmfrest-production.up.railway.app/api',
     })
@@ -27,12 +28,14 @@ const HttpProvider = ({ children, ctx }) => {
       },
       (error) => Promise.reject(error)
     )
+
+    return _axios;
   }, [token])
 
   return (
     <HttpContext.Provider
       value={{
-        client: _client,
+        client
       }}>
       {children}
     </HttpContext.Provider>
